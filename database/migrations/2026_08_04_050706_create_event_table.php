@@ -11,7 +11,7 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             
-            // 2. PRIMARY KEY HARUS ADA! Jangan dihapus ya.
+            // 2. PRIMARY KEY HARUS ADA! Jangan dihapus.
             $table->uuid('id')->primary()->default(DB::raw('gen_random_uuid()'));
             
             $table->foreignUuid('organization_id')->constrained('users')->cascadeOnDelete();
