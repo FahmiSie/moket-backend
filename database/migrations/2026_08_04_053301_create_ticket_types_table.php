@@ -37,7 +37,7 @@ return new class extends Migration
             
             $table->timestamps();
             
-            // Soft delete sangat krusial di sini agar data transaksi keuangan historis tidak rusak jika tiket dihapus panitia.
+            
             $table->softDeletes();
         });
     }
