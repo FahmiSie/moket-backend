@@ -19,8 +19,8 @@ class RegisterRequest extends FormRequest
             'name'     => ['required', 'string', 'max:150'],
             'email'    => ['required', 'string', 'email', 'max:150', 'unique:users,email'],
             'password' => ['required', 'string', 'min:8', 'confirmed'], // Wajib ada password_confirmation
-            'role'     => ['nullable', 'string', 'in:sub_organization,talent,mentor,user'], 
-            
+            'role' => ['nullable', 'string', 'in:talent,mentor,user'],
+
             // Validasi untuk tabel user_profiles
             'phone'         => ['nullable', 'string', 'max:20'],
             'school_origin' => ['nullable', 'string', 'max:150'],
