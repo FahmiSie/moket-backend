@@ -21,9 +21,9 @@ return new class extends Migration
             $table->string('school_origin', 150)->nullable();
             $table->string('class_batch', 100)->nullable();
 
-            $table->string('avatar_url', 255)->nullable;
+            $table->string('avatar_url', 255)->nullable();
 
-            $table->enum('category', ['Internal','External'])->default('Internal');
+            $table->enum('category', ['internal','external'])->default('internal');
             $table->timestamps();
         });
     }
