@@ -30,7 +30,7 @@ class AuthApiTest extends TestCase
             'category' => 'internal'
         ];
 
-        $response = $this->postJson('/api/register', $payload);
+        $response = $this->postJson('/api/auth/register', $payload);
 
         $response->assertStatus(201)
                  ->assertJsonStructure([
@@ -72,7 +72,7 @@ class AuthApiTest extends TestCase
             'phone' => '08987654321',
         ];
 
-        $response = $this->postJson('/api/register', $payload);
+        $response = $this->postJson('/api/auth/register', $payload);
 
         $response->assertStatus(201);
         $this->assertDatabaseHas('talent_profiles', []);
@@ -83,7 +83,7 @@ class AuthApiTest extends TestCase
      */
     public function test_registration_requires_mandatory_fields(): void
     {
-        $response = $this->postJson('/api/register', []);
+        $response = $this->postJson('/api/auth/register', []);
 
         $response->assertStatus(422)
                  ->assertJsonStructure([
@@ -102,7 +102,7 @@ class AuthApiTest extends TestCase
             'password' => bcrypt('password123')
         ]);
 
-        $response = $this->postJson('/api/login', [
+        $response = $this->postJson('/api/auth/login', [
             'email' => 'login_test@example.com',
             'password' => 'password123'
         ]);
@@ -119,14 +119,14 @@ class AuthApiTest extends TestCase
     }
 
     /**
-     * Test getting current user profile via /api/me
+     * Test getting current user profile via /api/auth/me
      */
     public function test_get_current_user_profile(): void
     {
         $user = User::factory()->create();
         Sanctum::actingAs($user);
 
-        $response = $this->getJson('/api/me');
+        $response = $this->getJson('/api/auth/me');
 
         $response->assertStatus(200)
                  ->assertJson([
@@ -148,7 +148,7 @@ class AuthApiTest extends TestCase
         $user = User::factory()->create();
         Sanctum::actingAs($user);
 
-        $response = $this->postJson('/api/logout');
+        $response = $this->postJson('/api/auth/logout');
 
         $response->assertStatus(200)
                  ->assertJson([

@@ -6,13 +6,16 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\TestAuthorizationController;
 
 // Public Routes (Bisa diakses tanpa login)
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
+Route::prefix('auth')->group(function () {
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/google', [AuthController::class, 'loginWithGoogle']);
+});
 
 // Protected Routes (Hanya bisa diakses jika menyertakan Token Sanctum yang valid)
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/logout', [AuthController::class, 'logout']);
-    Route::get('/me', [AuthController::class, 'me']);
+    Route::post('/auth/logout', [AuthController::class, 'logout']);
+    Route::get('/auth/me', [AuthController::class, 'me']);
     
     // Test endpoint for MOK-11 (Global Role)
     Route::get('/admin-only', function (Request $request) {

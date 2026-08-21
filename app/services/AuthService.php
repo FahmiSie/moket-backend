@@ -5,6 +5,9 @@ namespace App\Services;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Google_Client;
+use Exception;
 
 class AuthService
 {
@@ -65,7 +68,7 @@ class AuthService
 
         // Cek apakah akun aktif
         if ($user->status !== 'active') {
-            throw new \Exception("Akun Anda berstatus: {$user->status}.");
+            throw new Exception("Akun Anda berstatus: {$user->status}.");
         }
 
         $token = $user->createToken('auth_token')->plainTextToken;
@@ -74,5 +77,81 @@ class AuthService
             'user'  => $user,
             'token' => $token
         ];
+    }
+
+    public function loginWithGoogle(string $idToken)
+    {
+        // 1. Inisialisasi Google Client
+        $client = new Google_Client(['client_id' => config('services.google.client_id')]);
+        
+        // 2. Verifikasi ID Token secara kriptografis ke Google Server
+        $payload = $client->verifyIdToken($idToken);
+
+        // Jika tidak valid (signature salah, kadaluarsa, dsb)
+        if (!$payload) {
+            throw new Exception('Invalid Google ID Token.');
+        }
+
+        // 3. SECURITY CHECK: Verifikasi Audience (Aud)
+        // Mencegah Confused Deputy Attack (token dari app lain disalahgunakan ke API kita)
+        if ($payload['aud'] !== config('services.google.client_id')) {
+            throw new Exception('Audience mismatch. Potential hijacker token.');
+        }
+
+        // Ekstrak data dari token
+        $googleId = $payload['sub'];
+        $email = $payload['email'];
+        $name = $payload['name'];
+        // $picture = $payload['picture'] ?? null; // Bisa disimpan jika tabel punya kolom avatar
+
+        // 4. Proses Link/Create menggunakan DB Transaction
+        return DB::transaction(function () use ($googleId, $email, $name) {
+            
+            // Cari user berdasarkan google_id terlebih dahulu
+            $user = User::where('google_id', $googleId)->first();
+
+            if (!$user) {
+                // Jika google_id belum ada, cari berdasarkan email (Account Linking)
+                $user = User::where('email', $email)->first();
+
+                if ($user) {
+                    // Update user lama agar ter-link dengan google_id ini
+                    $user->update(['google_id' => $googleId]);
+                } else {
+                    // Jika benar-benar user baru, buat akun baru
+                    $user = User::create([
+                        'google_id' => $googleId,
+                        'name'      => $name,
+                        'email'     => $email,
+                        'password'  => null, // User SSO tidak punya password
+                        'role'      => 'user', // Default role untuk registrasi via SSO
+                        'status'    => 'active',
+                    ]);
+
+                    // Buat user_profile default
+                    DB::table('user_profiles')->insert([
+                        'id'            => DB::raw('gen_random_uuid()'),
+                        'user_id'       => $user->id,
+                        'full_name'     => $name,
+                        'category'      => 'internal',
+                        'created_at'    => now(),
+                        'updated_at'    => now(),
+                    ]);
+                }
+            }
+
+            // 5. Cek status akun (banned/inactive)
+            if ($user->status !== 'active') {
+                throw new Exception("Akun Anda berstatus: {$user->status}.");
+            }
+
+            // 6. Generate Token Sanctum
+            $token = $user->createToken('auth_token')->plainTextToken;
+
+            return [
+                'user'  => $user,
+                'token' => $token
+            ];
+        });
     }
 }
