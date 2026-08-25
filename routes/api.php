@@ -3,10 +3,12 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController; 
+use App\Http\Controllers\Api\EventController;
 use App\Http\Controllers\Api\HomepageController;
 use App\Http\Controllers\Api\TestAuthorizationController;
 
 // Public Routes (Bisa diakses tanpa login)
+Route::get('/events', [EventController::class, 'index']);
 Route::prefix('auth')->group(function () {
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);
@@ -15,6 +17,8 @@ Route::prefix('auth')->group(function () {
 
 Route::prefix('homepage')->group(function () {
     Route::get('/featured-events', [HomepageController::class, 'featuredEvents']);
+    Route::get('/sub-organizations', [HomepageController::class, 'subOrganizations']);
+    Route::get('/talent-highlights', [HomepageController::class, 'talentHighlights']);
 });
 
 // Protected Routes (Hanya bisa diakses jika menyertakan Token Sanctum yang valid)

@@ -39,4 +39,9 @@ class User extends Authenticatable
                     ->withPivot('id', 'role', 'status', 'joined_at')
                     ->withTimestamps();
     }
+
+    public function talentProfile()
+    {
+        return $this->hasOne(TalentProfile::class);
+    }
 }

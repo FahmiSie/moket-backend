@@ -4,35 +4,61 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\FeaturedEventResource;
-use App\Models\Event;
+use App\Http\Resources\SubOrganizationResource;
+use App\Http\Resources\TalentHighlightResource;
+use App\Services\HomepageService;
 use App\Traits\ApiResponse;
-use Illuminate\Support\Facades\Cache;
 
 class HomepageController extends Controller
 {
     use ApiResponse;
 
+    protected $homepageService;
+
+    public function __construct(HomepageService $homepageService)
+    {
+        $this->homepageService = $homepageService;
+    }
+
     /**
      * GET /api/homepage/featured-events
-     *
-     * Mengembalikan maks 3 event unggulan yang published dan belum lewat,
-     * diurutkan berdasarkan start_date terdekat.
-     * Response di-cache 60 detik untuk mengurangi beban database.
+     * Maks 3 event published terdekat.
      */
     public function featuredEvents()
     {
-        $events = Cache::remember('homepage:featured-events', 60, function () {
-            return Event::with('organization')
-                ->where('status', 'published')
-                ->where('start_date', '>=', now())
-                ->orderBy('start_date', 'asc')
-                ->limit(3)
-                ->get();
-        });
+        $events = $this->homepageService->featuredEvents();
 
         return $this->successResponse(
             'Featured events retrieved successfully.',
             FeaturedEventResource::collection($events)
+        );
+    }
+
+    /**
+     * GET /api/homepage/sub-organizations
+     * Semua sub-organisasi aktif.
+     */
+    public function subOrganizations()
+    {
+        $organizations = $this->homepageService->subOrganizations();
+
+        return $this->successResponse(
+            'Sub-organizations retrieved successfully.',
+            SubOrganizationResource::collection($organizations)
+        );
+    }
+
+    /**
+     * GET /api/homepage/talent-highlights
+     * Talent yang punya bio, max 6.
+     */
+    public function talentHighlights()
+    {
+        $talents = $this->homepageService->talentHighlights();
+
+        return $this->successResponse(
+            'Talent highlights retrieved successfully.',
+            TalentHighlightResource::collection($talents)
         );
     }
 }
