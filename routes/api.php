@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController; 
+use App\Http\Controllers\Api\HomepageController;
 use App\Http\Controllers\Api\TestAuthorizationController;
 
 // Public Routes (Bisa diakses tanpa login)
@@ -10,6 +11,10 @@ Route::prefix('auth')->group(function () {
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/google', [AuthController::class, 'loginWithGoogle']);
+});
+
+Route::prefix('homepage')->group(function () {
+    Route::get('/featured-events', [HomepageController::class, 'featuredEvents']);
 });
 
 // Protected Routes (Hanya bisa diakses jika menyertakan Token Sanctum yang valid)
