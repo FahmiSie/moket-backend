@@ -29,8 +29,7 @@ class EventDiscoveryApiTest extends TestCase
 
         $response = $this->getJson('/api/events');
 
-        $response->assertStatus(200)
-                 ->assertJsonPath('success', true);
+        $response->assertStatus(200);
                  
         $data = $response->json('data');
         $meta = $response->json('meta');
@@ -79,7 +78,6 @@ class EventDiscoveryApiTest extends TestCase
         $response = $this->getJson('/api/events?q=impossible_search_query_that_yields_nothing');
         
         $response->assertStatus(200)
-                 ->assertJsonPath('success', true)
                  ->assertJsonPath('data', []);
     }
 }

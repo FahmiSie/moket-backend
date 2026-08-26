@@ -2,56 +2,63 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Filters\EventFilter;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\EventResource;
-use App\Services\EventService;
+use App\Http\Requests\ListEventsRequest;
+use App\Http\Resources\EventDetailResource;
+use App\Http\Resources\EventListItemResource;
+use App\Models\Event;
 use App\Traits\ApiResponse;
-use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
     use ApiResponse;
 
-    protected $eventService;
-
-    public function __construct(EventService $eventService)
-    {
-        $this->eventService = $eventService;
-    }
-
     /**
      * GET /api/events
-     * Endpoint untuk Discovery Event (Search, Filter, Sort, Pagination)
+     * Endpoint untuk Discovery Event (List)
      */
-    public function index(Request $request)
+    public function index(ListEventsRequest $request)
     {
-        // Ambil semua query parameters
-        $filters = $request->only([
-            'q', 'category', 'subOrg', 'scope', 
-            'dateFrom', 'dateTo', 'sort'
-        ]);
+        $filters = $request->validated();
+        $perPage = $request->input('perPage', 12);
 
-        // Lempar ke service layer
-        $events = $this->eventService->searchAndFilter($filters);
+        // Gunakan EventFilter (Query Object) dan Eager Load organization untuk mencegah N+1
+        $query = EventFilter::apply(Event::query(), $filters)->with('organization');
 
-        // Jika kosong (empty state)
+        $events = $query->paginate($perPage);
+
+        // Sesuai edge case MOK-25: 
+        // Jika kosong, tetap return 200 OK dengan data []
         if ($events->isEmpty()) {
             return response()->json([
-                'success' => true,
-                'message' => 'No events found matching the criteria.',
                 'data' => [],
                 'meta' => [
                     'current_page' => $events->currentPage(),
-                    'last_page' => $events->lastPage(),
-                    'total' => $events->total(),
+                    'last_page'    => $events->lastPage(),
+                    'total'        => $events->total(),
+                    'per_page'     => $events->perPage(),
                 ]
             ], 200);
         }
 
-        // Return pagination resource yang dimapping ke EventResource
-        return EventResource::collection($events)->additional([
-            'success' => true,
-            'message' => 'Events retrieved successfully.'
-        ]);
+        // Return pagination resource dengan EventListItemResource (tanpa description)
+        return EventListItemResource::collection($events);
+    }
+
+    /**
+     * GET /api/events/{slug}
+     * Endpoint untuk Detail Event
+     */
+    public function show($slug)
+    {
+        // Hanya ambil event jika status = published. 
+        // Jika belum published atau tidak ada, return 404 (firstOrFail).
+        $event = Event::with('organization')
+            ->where('slug', $slug)
+            ->where('status', 'published')
+            ->firstOrFail();
+
+        return new EventDetailResource($event);
     }
 }

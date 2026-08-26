@@ -21,6 +21,9 @@ Route::prefix('homepage')->group(function () {
     Route::get('/talent-highlights', [HomepageController::class, 'talentHighlights']);
 });
 
+Route::get('/events', [EventController::class, 'index']);
+Route::get('/events/{slug}', [EventController::class, 'show']);
+
 // Protected Routes (Hanya bisa diakses jika menyertakan Token Sanctum yang valid)
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/auth/logout', [AuthController::class, 'logout']);
@@ -45,7 +48,6 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/organizations/{organization}/events', [TestAuthorizationController::class, 'createEvent']);
         Route::get('/events/{event}', [TestAuthorizationController::class, 'viewEvent']);
         Route::put('/events/{event}', [TestAuthorizationController::class, 'updateEvent']);
-        Route::delete('/events/{event}', [TestAuthorizationController::class, 'deleteEvent']);
         Route::post('/events/{event}/check-in', [TestAuthorizationController::class, 'checkInEvent']);
         Route::post('/events/{event}/tickets', [TestAuthorizationController::class, 'manageTickets']);
     });
