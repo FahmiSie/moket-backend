@@ -26,4 +26,9 @@ class TransactionItem extends Model
     {
         return $this->belongsTo(TicketType::class);
     }
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class, 'transaction_item_id');
+    }
 }

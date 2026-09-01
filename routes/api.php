@@ -31,8 +31,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/auth/logout', [AuthController::class, 'logout']);
     Route::get('/auth/me', [AuthController::class, 'me']);
 
-    // Transactions
+    // Transactions & Tickets
     Route::post('/events/{event:slug}/checkout', [\App\Http\Controllers\Api\CheckoutController::class, 'store']);
+    Route::get('/user/tickets', [\App\Http\Controllers\Api\UserTicketController::class, 'index']);
+    Route::get('/user/tickets/{ticket:code}', [\App\Http\Controllers\Api\UserTicketController::class, 'show']);
     
     // Test endpoint for MOK-11 (Global Role)
     Route::get('/admin-only', function (Request $request) {

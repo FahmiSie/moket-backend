@@ -89,6 +89,12 @@ class PaymentWebhookController extends Controller
                     ->where('status', 'pending')
                     ->update($updateData);
 
+                // Jika update berhasil (artinya ini notifikasi pertama)
+                if ($affected > 0 && $newStatus === 'success') {
+                    $transaction = Transaction::where('invoice_number', $orderId)->first();
+                    event(new \App\Events\TransactionPaid($transaction));
+                }
+
                 // Jika update berhasil (artinya ini notifikasi pertama) dan status gagal/expired
                 if ($affected > 0 && in_array($newStatus, ['failed', 'expired'])) {
                     $transaction = Transaction::with('transactionItems')->where('invoice_number', $orderId)->first();
