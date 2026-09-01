@@ -97,7 +97,7 @@ endpoints:
         name: category
         description: ''
         required: false
-        example: external
+        example: internal
         type: string
         enumValues:
           - internal
@@ -112,7 +112,7 @@ endpoints:
       phone: aykcmyuwpwlvqwrs
       school_origin: i
       class_batch: t
-      category: external
+      category: internal
     fileParameters: []
     responses:
       -

@@ -99,6 +99,9 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-events--slug-">
                                 <a href="#endpoints-GETapi-events--slug-">Get Event Detail</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-webhooks-midtrans">
+                                <a href="#endpoints-POSTapi-webhooks-midtrans">Handle Midtrans Payment Notification (Webhook)</a>
+                            </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-admin-only">
                                 <a href="#endpoints-GETapi-admin-only">GET api/admin-only</a>
                             </li>
@@ -120,6 +123,16 @@
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-transactions" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="transactions">
+                    <a href="#transactions">Transactions</a>
+                </li>
+                                    <ul id="tocify-subheader-transactions" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="transactions-POSTapi-events--event_slug--checkout">
+                                <a href="#transactions-POSTapi-events--event_slug--checkout">Checkout Tiket</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
             </div>
 
     <ul class="toc-footer" id="toc-footer">
@@ -129,7 +142,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: August 27, 2026</li>
+        <li>Last updated: September 1, 2026</li>
     </ul>
 </div>
 
@@ -177,7 +190,7 @@ You can switch the language used with the tabs at the top right (or from the nav
     \"phone\": \"aykcmyuwpwlvqwrs\",
     \"school_origin\": \"i\",
     \"class_batch\": \"t\",
-    \"category\": \"external\"
+    \"category\": \"internal\"
 }"
 </code></pre></div>
 
@@ -199,7 +212,7 @@ let body = {
     "phone": "aykcmyuwpwlvqwrs",
     "school_origin": "i",
     "class_batch": "t",
-    "category": "external"
+    "category": "internal"
 };
 
 fetch(url, {
@@ -395,10 +408,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="category"                data-endpoint="POSTapi-auth-register"
-               value="external"
+               value="internal"
                data-component="body">
     <br>
-<p>Example: <code>external</code></p>
+<p>Example: <code>internal</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>internal</code></li> <li><code>external</code></li></ul>
         </div>
@@ -1033,9 +1046,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"q\": \"b\",
     \"category\": \"architecto\",
     \"scope\": \"internal\",
-    \"dateFrom\": \"2026-08-27\",
-    \"dateTo\": \"2052-09-19\",
-    \"sort\": \"price\",
+    \"dateFrom\": \"2026-09-01\",
+    \"dateTo\": \"2052-09-24\",
+    \"sort\": \"nearest\",
     \"page\": 22,
     \"perPage\": 7
 }"
@@ -1056,9 +1069,9 @@ let body = {
     "q": "b",
     "category": "architecto",
     "scope": "internal",
-    "dateFrom": "2026-08-27",
-    "dateTo": "2052-09-19",
-    "sort": "price",
+    "dateFrom": "2026-09-01",
+    "dateTo": "2052-09-24",
+    "sort": "nearest",
     "page": 22,
     "perPage": 7
 };
@@ -1080,33 +1093,33 @@ fetch(url, {
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: &quot;01a04311-eb80-7088-93b2-a44b825f2cf5&quot;,
-            &quot;slug&quot;: &quot;quos-velit-et-fugiat-Z4gLj&quot;,
+            &quot;id&quot;: &quot;01a05d19-f56a-7217-9601-94719ce3220b&quot;,
+            &quot;slug&quot;: &quot;quos-velit-et-fugiat-uu5EM&quot;,
             &quot;name&quot;: &quot;Quos velit et fugiat.&quot;,
             &quot;posterUrl&quot;: null,
             &quot;category&quot;: null,
             &quot;location&quot;: null,
             &quot;scope&quot;: &quot;external&quot;,
-            &quot;startDate&quot;: &quot;2026-09-03T11:54:02+00:00&quot;,
-            &quot;endDate&quot;: &quot;2026-09-04T11:54:02+00:00&quot;,
+            &quot;startDate&quot;: &quot;2026-09-08T13:12:57+00:00&quot;,
+            &quot;endDate&quot;: &quot;2026-09-09T13:12:57+00:00&quot;,
             &quot;organizer&quot;: {
-                &quot;id&quot;: &quot;01a04311-eb71-7185-b763-684ce995f5ab&quot;,
+                &quot;id&quot;: &quot;01a05d19-f565-70a0-bab7-5c4a8897bf5d&quot;,
                 &quot;name&quot;: &quot;Koch PLC&quot;,
                 &quot;logoUrl&quot;: null
             }
         },
         {
-            &quot;id&quot;: &quot;01a04311-eb8d-7162-a19d-f36167a09ef4&quot;,
-            &quot;slug&quot;: &quot;praesentium-quis-adipisci-osPqg&quot;,
+            &quot;id&quot;: &quot;01a05d19-f572-7240-97c2-21bd295d2a21&quot;,
+            &quot;slug&quot;: &quot;praesentium-quis-adipisci-flQJ0&quot;,
             &quot;name&quot;: &quot;Praesentium quis adipisci.&quot;,
             &quot;posterUrl&quot;: null,
             &quot;category&quot;: null,
             &quot;location&quot;: null,
             &quot;scope&quot;: &quot;internal&quot;,
-            &quot;startDate&quot;: &quot;2026-09-03T11:54:03+00:00&quot;,
-            &quot;endDate&quot;: &quot;2026-09-04T11:54:03+00:00&quot;,
+            &quot;startDate&quot;: &quot;2026-09-08T13:12:57+00:00&quot;,
+            &quot;endDate&quot;: &quot;2026-09-09T13:12:57+00:00&quot;,
             &quot;organizer&quot;: {
-                &quot;id&quot;: &quot;01a04311-eb8c-73f6-8f17-f421c8edcba9&quot;,
+                &quot;id&quot;: &quot;01a05d19-f571-7312-ab7b-bab327677d18&quot;,
                 &quot;name&quot;: &quot;Franecki Inc&quot;,
                 &quot;logoUrl&quot;: null
             }
@@ -1244,10 +1257,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="dateFrom"                data-endpoint="GETapi-events"
-               value="2026-08-27"
+               value="2026-09-01"
                data-component="body">
     <br>
-<p>Must be a valid date in the format <code>Y-m-d</code>. Example: <code>2026-08-27</code></p>
+<p>Must be a valid date in the format <code>Y-m-d</code>. Example: <code>2026-09-01</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>dateTo</code></b>&nbsp;&nbsp;
@@ -1256,10 +1269,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="dateTo"                data-endpoint="GETapi-events"
-               value="2052-09-19"
+               value="2052-09-24"
                data-component="body">
     <br>
-<p>Must be a valid date in the format <code>Y-m-d</code>. Must be a date after or equal to <code>dateFrom</code>. Example: <code>2052-09-19</code></p>
+<p>Must be a valid date in the format <code>Y-m-d</code>. Must be a date after or equal to <code>dateFrom</code>. Example: <code>2052-09-24</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>sort</code></b>&nbsp;&nbsp;
@@ -1268,10 +1281,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="sort"                data-endpoint="GETapi-events"
-               value="price"
+               value="nearest"
                data-component="body">
     <br>
-<p>Example: <code>price</code></p>
+<p>Example: <code>nearest</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>newest</code></li> <li><code>nearest</code></li> <li><code>price</code></li></ul>
         </div>
@@ -1345,22 +1358,22 @@ fetch(url, {
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: &quot;01a04311-ecc2-717b-8c37-672260e55140&quot;,
-        &quot;slug&quot;: &quot;et-animi-quos-hofxF&quot;,
-        &quot;name&quot;: &quot;Et animi quos.&quot;,
+        &quot;id&quot;: &quot;01a05d19-f6a4-70ca-a6d7-749355296035&quot;,
+        &quot;slug&quot;: &quot;sequi-molestiae-voluptatem-et-xrRe4&quot;,
+        &quot;name&quot;: &quot;Sequi molestiae voluptatem et.&quot;,
         &quot;posterUrl&quot;: null,
-        &quot;description&quot;: &quot;Fugiat sunt nihil accusantium harum mollitia. Deserunt aut ab provident perspiciatis quo omnis nostrum. Adipisci quidem nostrum qui commodi incidunt iure.&quot;,
+        &quot;description&quot;: &quot;Aut odio dolorum voluptates exercitationem est aperiam quis. Nulla vel voluptas aliquam qui molestiae voluptatem. Voluptatem molestiae magnam blanditiis in aliquid.&quot;,
         &quot;category&quot;: null,
         &quot;location&quot;: null,
         &quot;scope&quot;: &quot;external&quot;,
         &quot;status&quot;: &quot;draft&quot;,
-        &quot;startDate&quot;: &quot;2026-09-03T11:54:03+00:00&quot;,
-        &quot;endDate&quot;: &quot;2026-09-04T11:54:03+00:00&quot;,
+        &quot;startDate&quot;: &quot;2026-09-08T13:12:57+00:00&quot;,
+        &quot;endDate&quot;: &quot;2026-09-09T13:12:57+00:00&quot;,
         &quot;organizer&quot;: {
-            &quot;id&quot;: &quot;01a04311-ecc2-717b-8c37-672260db46f1&quot;,
-            &quot;name&quot;: &quot;Leuschke, Bauch and Fritsch&quot;,
+            &quot;id&quot;: &quot;01a05d19-f6a3-72e9-885e-f556c95e265f&quot;,
+            &quot;name&quot;: &quot;Heathcote, Abshire and Schroeder&quot;,
             &quot;logoUrl&quot;: null,
-            &quot;description&quot;: &quot;Omnis autem et consequatur.&quot;
+            &quot;description&quot;: &quot;In unde rerum voluptas ab maxime qui rerum.&quot;
         },
         &quot;tickets&quot;: [],
         &quot;timeline&quot;: []
@@ -1453,6 +1466,117 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>The slug of the event. Example: <code>konser-musik-kemerdekaan</code></p>
             </div>
                     </form>
+
+                    <h2 id="endpoints-POSTapi-webhooks-midtrans">Handle Midtrans Payment Notification (Webhook)</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-webhooks-midtrans">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://jasmine-unworthy-folic.ngrok-free.dev/api/webhooks/midtrans" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://jasmine-unworthy-folic.ngrok-free.dev/api/webhooks/midtrans"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-webhooks-midtrans">
+</span>
+<span id="execution-results-POSTapi-webhooks-midtrans" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-webhooks-midtrans"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-webhooks-midtrans"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-webhooks-midtrans" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-webhooks-midtrans">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-webhooks-midtrans" data-method="POST"
+      data-path="api/webhooks/midtrans"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-webhooks-midtrans', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-webhooks-midtrans"
+                    onclick="tryItOut('POSTapi-webhooks-midtrans');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-webhooks-midtrans"
+                    onclick="cancelTryOut('POSTapi-webhooks-midtrans');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-webhooks-midtrans"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/webhooks/midtrans</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-webhooks-midtrans"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-webhooks-midtrans"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
 
                     <h2 id="endpoints-GETapi-admin-only">GET api/admin-only</h2>
 
@@ -1631,11 +1755,11 @@ fetch(url, {
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: &quot;01a04311-ebad-7051-a1ff-f2a5fcdc6719&quot;,
-            &quot;slug&quot;: &quot;mollitia-modi-deserunt-aut-hNBXz&quot;,
+            &quot;id&quot;: &quot;01a05d19-f590-71ba-b20d-424efe4b649a&quot;,
+            &quot;slug&quot;: &quot;mollitia-modi-deserunt-aut-JOOPy&quot;,
             &quot;name&quot;: &quot;Mollitia modi deserunt aut.&quot;,
             &quot;posterUrl&quot;: null,
-            &quot;startDate&quot;: &quot;2026-09-03T11:54:03+00:00&quot;,
+            &quot;startDate&quot;: &quot;2026-09-08T13:12:57+00:00&quot;,
             &quot;location&quot;: null,
             &quot;organizer&quot;: {
                 &quot;name&quot;: &quot;Glover, Raynor and Schultz&quot;,
@@ -1643,11 +1767,11 @@ fetch(url, {
             }
         },
         {
-            &quot;id&quot;: &quot;01a04311-ebb2-72ce-8a11-cb5b308fc6b7&quot;,
-            &quot;slug&quot;: &quot;libero-aliquam-veniam-corporis-paTs5&quot;,
+            &quot;id&quot;: &quot;01a05d19-f596-721e-885a-ea7d76e414ac&quot;,
+            &quot;slug&quot;: &quot;libero-aliquam-veniam-corporis-P6A83&quot;,
             &quot;name&quot;: &quot;Libero aliquam veniam corporis.&quot;,
             &quot;posterUrl&quot;: null,
-            &quot;startDate&quot;: &quot;2026-09-03T11:54:03+00:00&quot;,
+            &quot;startDate&quot;: &quot;2026-09-08T13:12:57+00:00&quot;,
             &quot;location&quot;: null,
             &quot;organizer&quot;: {
                 &quot;name&quot;: &quot;Little Inc&quot;,
@@ -1777,16 +1901,16 @@ fetch(url, {
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: &quot;01a04311-ebb7-7070-a14f-193b24bae177&quot;,
+            &quot;id&quot;: &quot;01a05d19-f59c-7324-8407-867c32ad1da5&quot;,
             &quot;name&quot;: &quot;Conroy-Dibbert&quot;,
-            &quot;slug&quot;: &quot;conroy-dibbert-EsfrJ&quot;,
+            &quot;slug&quot;: &quot;conroy-dibbert-k88ge&quot;,
             &quot;logoUrl&quot;: null,
             &quot;description&quot;: &quot;Assumenda et tenetur ab reiciendis quia.&quot;
         },
         {
-            &quot;id&quot;: &quot;01a04311-ebba-7253-b547-a87b42d48d21&quot;,
+            &quot;id&quot;: &quot;01a05d19-f5a0-71bb-876c-1252c01f15b2&quot;,
             &quot;name&quot;: &quot;Braun Group&quot;,
-            &quot;slug&quot;: &quot;braun-group-X1f6g&quot;,
+            &quot;slug&quot;: &quot;braun-group-MNZvJ&quot;,
             &quot;logoUrl&quot;: null,
             &quot;description&quot;: &quot;Et dolores quia maiores.&quot;
         }
@@ -1913,14 +2037,14 @@ fetch(url, {
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: &quot;01a04311-ecb5-71af-bdbc-b0520b1b7b72&quot;,
+            &quot;id&quot;: &quot;01a05d19-f698-706e-a555-09f6572e9868&quot;,
             &quot;name&quot;: &quot;Juvenal O&#039;Kon&quot;,
             &quot;category&quot;: &quot;MC&quot;,
             &quot;bio&quot;: &quot;Repellat officiis corporis nesciunt ut. Iure impedit molestiae ut rem est esse sint. Molestiae sunt suscipit doloribus fugiat ut aut. Et error neque recusandae et.&quot;,
             &quot;portfolioUrl&quot;: &quot;https://hoeger.net/dicta-vitae-assumenda-consequatur-ut.html&quot;
         },
         {
-            &quot;id&quot;: &quot;01a04311-ecbc-7308-8025-7b67d26576c7&quot;,
+            &quot;id&quot;: &quot;01a05d19-f69e-73d9-8821-1dcee69d2f8b&quot;,
             &quot;name&quot;: &quot;Lola Doyle&quot;,
             &quot;category&quot;: &quot;Band&quot;,
             &quot;bio&quot;: &quot;Aspernatur consectetur id a consectetur assumenda eaque neque. Sunt nihil accusantium odit ut. Rem dolorem aut quis. Dolores omnis et earum consequatur asperiores est vel id.&quot;,
@@ -2002,6 +2126,255 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>application/json</code></p>
             </div>
                         </form>
+
+                <h1 id="transactions">Transactions</h1>
+
+    
+
+                                <h2 id="transactions-POSTapi-events--event_slug--checkout">Checkout Tiket</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Membuat pesanan tiket (transaction) baru untuk event tertentu.
+Mengamankan kuota dengan database locking dan validasi batas maksimal per user.</p>
+
+<span id="example-requests-POSTapi-events--event_slug--checkout">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://jasmine-unworthy-folic.ngrok-free.dev/api/events/01a05d10-2985-725a-93fb-2137ed73bd4b/checkout" \
+    --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"tickets\": [
+        {
+            \"ticket_type_id\": \"0190bd05-95a7-7b24-9b21-432d64a02be0\",
+            \"quantity\": 2
+        }
+    ],
+    \"payment_method\": \"qris\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://jasmine-unworthy-folic.ngrok-free.dev/api/events/01a05d10-2985-725a-93fb-2137ed73bd4b/checkout"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "tickets": [
+        {
+            "ticket_type_id": "0190bd05-95a7-7b24-9b21-432d64a02be0",
+            "quantity": 2
+        }
+    ],
+    "payment_method": "qris"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-events--event_slug--checkout">
+            <blockquote>
+            <p>Example response (201):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Pesanan berhasil dibuat.&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: &quot;uuid&quot;,
+        &quot;invoice_number&quot;: &quot;INV-MOKET-20260901-XXXXXX&quot;,
+        &quot;total_amount&quot;: &quot;150000.00&quot;,
+        &quot;status&quot;: &quot;pending&quot;,
+        &quot;snap_token&quot;: null,
+        &quot;transaction_items&quot;: [
+            {
+                &quot;ticket_type_id&quot;: &quot;uuid&quot;,
+                &quot;quantity&quot;: 2,
+                &quot;price&quot;: &quot;75000.00&quot;,
+                &quot;subtotal&quot;: &quot;150000.00&quot;
+            }
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Kuota tiket tidak mencukupi.&quot;,
+    &quot;data&quot;: null
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-events--event_slug--checkout" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-events--event_slug--checkout"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-events--event_slug--checkout"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-events--event_slug--checkout" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-events--event_slug--checkout">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-events--event_slug--checkout" data-method="POST"
+      data-path="api/events/{event_slug}/checkout"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-events--event_slug--checkout', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-events--event_slug--checkout"
+                    onclick="tryItOut('POSTapi-events--event_slug--checkout');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-events--event_slug--checkout"
+                    onclick="cancelTryOut('POSTapi-events--event_slug--checkout');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-events--event_slug--checkout"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/events/{event_slug}/checkout</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-events--event_slug--checkout"
+               value="Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-events--event_slug--checkout"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-events--event_slug--checkout"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>event_slug</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="event_slug"                data-endpoint="POSTapi-events--event_slug--checkout"
+               value="01a05d10-2985-725a-93fb-2137ed73bd4b"
+               data-component="url">
+    <br>
+<p>The slug of the event. Example: <code>01a05d10-2985-725a-93fb-2137ed73bd4b</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>tickets</code></b>&nbsp;&nbsp;
+<small>object[]</small>&nbsp;
+ &nbsp;
+ &nbsp;
+<br>
+<p>Daftar tiket yang dibeli. Must have at least 1 items.</p>
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>ticket_type_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="tickets.0.ticket_type_id"                data-endpoint="POSTapi-events--event_slug--checkout"
+               value="6ff8f7f6-1eb3-3525-be4a-3932c805afed"
+               data-component="body">
+    <br>
+<p>Must be a valid UUID. Must match an existing stored value. Example: <code>6ff8f7f6-1eb3-3525-be4a-3932c805afed</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>quantity</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="tickets.0.quantity"                data-endpoint="POSTapi-events--event_slug--checkout"
+               value="67"
+               data-component="body">
+    <br>
+<p>Must be at least 1. Example: <code>67</code></p>
+                    </div>
+                                    </details>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>payment_method</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="payment_method"                data-endpoint="POSTapi-events--event_slug--checkout"
+               value="qris"
+               data-component="body">
+    <br>
+<p>Metode pembayaran pilihan user (opsional). Must not be greater than 50 characters. Example: <code>qris</code></p>
+        </div>
+        </form>
 
             
 
