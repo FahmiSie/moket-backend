@@ -15,8 +15,12 @@ class EventController extends Controller
     use ApiResponse;
 
     /**
-     * GET /api/events
-     * Endpoint untuk Discovery Event (List)
+     * Get list of Events
+     *
+     * Retrieve a paginated list of published events with dynamic filtering and sorting.
+     *
+     * @apiResourceCollection App\Http\Resources\EventListItemResource
+     * @apiResourceModel App\Models\Event
      */
     public function index(ListEventsRequest $request)
     {
@@ -47,8 +51,13 @@ class EventController extends Controller
     }
 
     /**
-     * GET /api/events/{slug}
-     * Endpoint untuk Detail Event
+     * Get Event Detail
+     *
+     * Retrieve the full details of a published event by its slug.
+     *
+     * @urlParam slug string required The slug of the event. Example: konser-musik-kemerdekaan
+     * @apiResource App\Http\Resources\EventDetailResource
+     * @apiResourceModel App\Models\Event
      */
     public function show($slug)
     {

@@ -21,7 +21,7 @@ class AuthService
                 'name'     => $data['name'],
                 'email'    => $data['email'],
                 'password' => Hash::make($data['password']),
-                'role'     => $data['role'] ?? 'user',
+                'role'     => 'user', // Hardcode role 'user' untuk mencegah role injection
                 'status'   => 'active',
             ]);
 
@@ -61,14 +61,17 @@ class AuthService
     {
         $user = User::where('email', $credentials['email'])->first();
 
-        // Cek email dan password
-        if (!$user || !Hash::check($credentials['password'], $user->password)) {
+        $password = $credentials['password'];
+        $hash = $user ? $user->password : '$2y$12$invalidhashtopreventtimingattack';
+        
+        // Cek email dan password (selalu jalankan hash check untuk mencegah timing attack)
+        if (!$user || !Hash::check($password, $hash)) {
             return null; // Return null agar Controller tahu login gagal
         }
 
         // Cek apakah akun aktif
         if ($user->status !== 'active') {
-            throw new Exception("Akun Anda berstatus: {$user->status}.");
+            throw new Exception("This account is not available. Please contact support.");
         }
 
         $token = $user->createToken('auth_token')->plainTextToken;
@@ -142,7 +145,7 @@ class AuthService
 
             // 5. Cek status akun (banned/inactive)
             if ($user->status !== 'active') {
-                throw new Exception("Akun Anda berstatus: {$user->status}.");
+                throw new Exception("This account is not available. Please contact support.");
             }
 
             // 6. Generate Token Sanctum

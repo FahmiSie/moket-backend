@@ -21,8 +21,14 @@ class HomepageController extends Controller
     }
 
     /**
-     * GET /api/homepage/featured-events
-     * Maks 3 event published terdekat.
+     * Get Featured Events
+     * 
+     * Retrieve a maximum of 3 upcoming published events for the homepage.
+     * Response is cached for 5 minutes.
+     *
+     * @group Homepage
+     * @apiResourceCollection App\Http\Resources\FeaturedEventResource
+     * @apiResourceModel App\Models\Event
      */
     public function featuredEvents()
     {
@@ -35,8 +41,14 @@ class HomepageController extends Controller
     }
 
     /**
-     * GET /api/homepage/sub-organizations
-     * Semua sub-organisasi aktif.
+     * Get Sub Organizations
+     * 
+     * Retrieve all active sub-organizations (Mitra).
+     * Response is cached for 5 minutes.
+     *
+     * @group Homepage
+     * @apiResourceCollection App\Http\Resources\SubOrganizationResource
+     * @apiResourceModel App\Models\Organization
      */
     public function subOrganizations()
     {
@@ -49,8 +61,14 @@ class HomepageController extends Controller
     }
 
     /**
-     * GET /api/homepage/talent-highlights
-     * Talent yang punya bio, max 6.
+     * Get Talent Highlights
+     * 
+     * Retrieve up to 6 talents that have a bio filled out.
+     * Response is cached for 5 minutes.
+     *
+     * @group Homepage
+     * @apiResourceCollection App\Http\Resources\TalentHighlightResource
+     * @apiResourceModel App\Models\TalentProfile
      */
     public function talentHighlights()
     {

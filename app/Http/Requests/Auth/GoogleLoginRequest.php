@@ -23,7 +23,7 @@ class GoogleLoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_token' => 'required|string',
+            'id_token' => ['required', 'string', 'regex:/^[A-Za-z0-9\-_]+\.[A-Za-z0-9\-_]+\.[A-Za-z0-9\-_]+$/'],
         ];
     }
 }

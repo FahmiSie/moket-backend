@@ -1,0 +1,241 @@
+name: Endpoints
+description: ''
+endpoints:
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/events
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get list of Events'
+      description: 'Retrieve a paginated list of published events with dynamic filtering and sorting.'
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      q:
+        custom: []
+        name: q
+        description: 'Must not be greater than 100 characters.'
+        required: false
+        example: b
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      category:
+        custom: []
+        name: category
+        description: ''
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      subOrg:
+        custom: []
+        name: subOrg
+        description: 'Must match an existing stored value.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      scope:
+        custom: []
+        name: scope
+        description: ''
+        required: false
+        example: internal
+        type: string
+        enumValues:
+          - internal
+          - external
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      dateFrom:
+        custom: []
+        name: dateFrom
+        description: 'Must be a valid date in the format <code>Y-m-d</code>.'
+        required: false
+        example: '2026-08-27'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      dateTo:
+        custom: []
+        name: dateTo
+        description: 'Must be a valid date in the format <code>Y-m-d</code>. Must be a date after or equal to <code>dateFrom</code>.'
+        required: false
+        example: '2052-09-19'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      sort:
+        custom: []
+        name: sort
+        description: ''
+        required: false
+        example: price
+        type: string
+        enumValues:
+          - newest
+          - nearest
+          - price
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      page:
+        custom: []
+        name: page
+        description: 'Must be at least 1.'
+        required: false
+        example: 22
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      perPage:
+        custom: []
+        name: perPage
+        description: 'Must be at least 1. Must not be greater than 100.'
+        required: false
+        example: 7
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      q: b
+      category: architecto
+      scope: internal
+      dateFrom: '2026-08-27'
+      dateTo: '2052-09-19'
+      sort: price
+      page: 22
+      perPage: 7
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":[{"id":"01a04311-eb80-7088-93b2-a44b825f2cf5","slug":"quos-velit-et-fugiat-Z4gLj","name":"Quos velit et fugiat.","posterUrl":null,"category":null,"location":null,"scope":"external","startDate":"2026-09-03T11:54:02+00:00","endDate":"2026-09-04T11:54:02+00:00","organizer":{"id":"01a04311-eb71-7185-b763-684ce995f5ab","name":"Koch PLC","logoUrl":null}},{"id":"01a04311-eb8d-7162-a19d-f36167a09ef4","slug":"praesentium-quis-adipisci-osPqg","name":"Praesentium quis adipisci.","posterUrl":null,"category":null,"location":null,"scope":"internal","startDate":"2026-09-03T11:54:03+00:00","endDate":"2026-09-04T11:54:03+00:00","organizer":{"id":"01a04311-eb8c-73f6-8f17-f421c8edcba9","name":"Franecki Inc","logoUrl":null}}]}'
+        headers: []
+        description: ''
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'api/events/{slug}'
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get Event Detail'
+      description: 'Retrieve the full details of a published event by its slug.'
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      slug:
+        custom: []
+        name: slug
+        description: 'The slug of the event.'
+        required: true
+        example: konser-musik-kemerdekaan
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      slug: konser-musik-kemerdekaan
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":"01a04311-ecc2-717b-8c37-672260e55140","slug":"et-animi-quos-hofxF","name":"Et animi quos.","posterUrl":null,"description":"Fugiat sunt nihil accusantium harum mollitia. Deserunt aut ab provident perspiciatis quo omnis nostrum. Adipisci quidem nostrum qui commodi incidunt iure.","category":null,"location":null,"scope":"external","status":"draft","startDate":"2026-09-03T11:54:03+00:00","endDate":"2026-09-04T11:54:03+00:00","organizer":{"id":"01a04311-ecc2-717b-8c37-672260db46f1","name":"Leuschke, Bauch and Fritsch","logoUrl":null,"description":"Omnis autem et consequatur."},"tickets":[],"timeline":[]}}'
+        headers: []
+        description: ''
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/admin-only
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null

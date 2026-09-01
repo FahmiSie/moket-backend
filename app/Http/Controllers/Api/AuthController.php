@@ -22,6 +22,26 @@ class AuthController extends Controller
         $this->authService = $authService;
     }
 
+    /**
+     * Register User
+     *
+     * Create a new user account.
+     *
+     * @group Authentication
+     * @unauthenticated
+     * @response 201 {
+     *   "success": true,
+     *   "message": "Registration successful.",
+     *   "data": {
+     *     "user": { "id": "uuid", "name": "Budi Santoso", "email": "budi@example.com" },
+     *     "token": "1|laravel_sanctum_token_string"
+     *   }
+     * }
+     * @response 422 {
+     *   "message": "The email has already been taken.",
+     *   "errors": { "email": ["The email has already been taken."] }
+     * }
+     */
     public function register(RegisterRequest $request)
     {
         try {
@@ -32,6 +52,27 @@ class AuthController extends Controller
         }
     }
 
+    /**
+     * Login Manual
+     *
+     * Authenticate using email and password to receive a Bearer token.
+     *
+     * @group Authentication
+     * @unauthenticated
+     * @response 200 {
+     *   "success": true,
+     *   "message": "Login successful.",
+     *   "data": {
+     *     "user": { "id": "uuid", "name": "Budi Santoso", "email": "budi@example.com" },
+     *     "token": "2|laravel_sanctum_token_string"
+     *   }
+     * }
+     * @response 401 {
+     *   "success": false,
+     *   "message": "Invalid credentials.",
+     *   "data": []
+     * }
+     */
     public function login(LoginRequest $request)
     {
         try {
@@ -47,6 +88,22 @@ class AuthController extends Controller
         }
     }
 
+    /**
+     * Login via Google
+     *
+     * Authenticate using a Google ID token to receive a Bearer token.
+     *
+     * @group Authentication
+     * @unauthenticated
+     * @response 200 {
+     *   "success": true,
+     *   "message": "Google Login successful.",
+     *   "data": {
+     *     "user": { "id": "uuid", "name": "Budi Santoso", "email": "budi@example.com" },
+     *     "token": "3|laravel_sanctum_token_string"
+     *   }
+     * }
+     */
     public function loginWithGoogle(GoogleLoginRequest $request)
     {
         try {
@@ -57,6 +114,19 @@ class AuthController extends Controller
         }
     }
 
+    /**
+     * Logout
+     *
+     * Revoke the current user's active Sanctum Bearer token.
+     *
+     * @group Authentication
+     * @authenticated
+     * @response 200 {
+     *   "success": true,
+     *   "message": "Logout successful.",
+     *   "data": null
+     * }
+     */
     public function logout(Request $request)
     {
         // Menghapus token Sanctum milik user yang sedang aktif
@@ -64,6 +134,21 @@ class AuthController extends Controller
         return $this->successResponse('Logout successful.');
     }
 
+    /**
+     * Get Current User (Me)
+     *
+     * Retrieve the currently authenticated user's profile.
+     *
+     * @group Authentication
+     * @authenticated
+     * @response 200 {
+     *   "success": true,
+     *   "message": "User data retrieved successfully.",
+     *   "data": {
+     *     "user": { "id": "uuid", "name": "Budi Santoso", "email": "budi@example.com" }
+     *   }
+     * }
+     */
     public function me(Request $request)
     {
         return $this->successResponse('User data retrieved successfully.', ['user' => $request->user()]);

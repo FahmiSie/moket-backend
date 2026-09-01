@@ -28,6 +28,9 @@ class AppServiceProvider extends ServiceProvider
         Gate::policy(Organization::class, OrganizationPolicy::class);
         Gate::policy(Event::class, EventPolicy::class);
 
+        // Remove X-Powered-By header
+        header_remove('X-Powered-By');
+
         // Super Admin bypass: super_admin melewati semua Policy tanpa pengecualian
         Gate::before(function ($user, $ability) {
             if ($user->role === 'super_admin') {
