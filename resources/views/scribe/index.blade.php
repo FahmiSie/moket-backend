@@ -102,6 +102,12 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-webhooks-midtrans">
                                 <a href="#endpoints-POSTapi-webhooks-midtrans">Handle Midtrans Payment Notification (Webhook)</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-user-tickets">
+                                <a href="#endpoints-GETapi-user-tickets">Get all active tickets for the authenticated user.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-user-tickets--ticket_code-">
+                                <a href="#endpoints-GETapi-user-tickets--ticket_code-">Get details of a specific ticket including its QR code.</a>
+                            </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-admin-only">
                                 <a href="#endpoints-GETapi-admin-only">GET api/admin-only</a>
                             </li>
@@ -1045,10 +1051,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"q\": \"b\",
     \"category\": \"architecto\",
-    \"scope\": \"internal\",
+    \"scope\": \"external\",
     \"dateFrom\": \"2026-09-01\",
     \"dateTo\": \"2052-09-24\",
-    \"sort\": \"nearest\",
+    \"sort\": \"newest\",
     \"page\": 22,
     \"perPage\": 7
 }"
@@ -1068,10 +1074,10 @@ const headers = {
 let body = {
     "q": "b",
     "category": "architecto",
-    "scope": "internal",
+    "scope": "external",
     "dateFrom": "2026-09-01",
     "dateTo": "2052-09-24",
-    "sort": "nearest",
+    "sort": "newest",
     "page": 22,
     "perPage": 7
 };
@@ -1093,33 +1099,33 @@ fetch(url, {
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: &quot;01a05d19-f56a-7217-9601-94719ce3220b&quot;,
-            &quot;slug&quot;: &quot;quos-velit-et-fugiat-uu5EM&quot;,
+            &quot;id&quot;: &quot;01a05d67-80eb-7205-ae06-bb087aba43da&quot;,
+            &quot;slug&quot;: &quot;quos-velit-et-fugiat-NQbqP&quot;,
             &quot;name&quot;: &quot;Quos velit et fugiat.&quot;,
             &quot;posterUrl&quot;: null,
             &quot;category&quot;: null,
             &quot;location&quot;: null,
             &quot;scope&quot;: &quot;external&quot;,
-            &quot;startDate&quot;: &quot;2026-09-08T13:12:57+00:00&quot;,
-            &quot;endDate&quot;: &quot;2026-09-09T13:12:57+00:00&quot;,
+            &quot;startDate&quot;: &quot;2026-09-08T14:37:39+00:00&quot;,
+            &quot;endDate&quot;: &quot;2026-09-09T14:37:39+00:00&quot;,
             &quot;organizer&quot;: {
-                &quot;id&quot;: &quot;01a05d19-f565-70a0-bab7-5c4a8897bf5d&quot;,
+                &quot;id&quot;: &quot;01a05d67-80e5-7106-be52-23eb9aa49035&quot;,
                 &quot;name&quot;: &quot;Koch PLC&quot;,
                 &quot;logoUrl&quot;: null
             }
         },
         {
-            &quot;id&quot;: &quot;01a05d19-f572-7240-97c2-21bd295d2a21&quot;,
-            &quot;slug&quot;: &quot;praesentium-quis-adipisci-flQJ0&quot;,
+            &quot;id&quot;: &quot;01a05d67-80f6-735f-91f2-ed6fca04215d&quot;,
+            &quot;slug&quot;: &quot;praesentium-quis-adipisci-YfSOU&quot;,
             &quot;name&quot;: &quot;Praesentium quis adipisci.&quot;,
             &quot;posterUrl&quot;: null,
             &quot;category&quot;: null,
             &quot;location&quot;: null,
             &quot;scope&quot;: &quot;internal&quot;,
-            &quot;startDate&quot;: &quot;2026-09-08T13:12:57+00:00&quot;,
-            &quot;endDate&quot;: &quot;2026-09-09T13:12:57+00:00&quot;,
+            &quot;startDate&quot;: &quot;2026-09-08T14:37:39+00:00&quot;,
+            &quot;endDate&quot;: &quot;2026-09-09T14:37:39+00:00&quot;,
             &quot;organizer&quot;: {
-                &quot;id&quot;: &quot;01a05d19-f571-7312-ab7b-bab327677d18&quot;,
+                &quot;id&quot;: &quot;01a05d67-80f5-706b-8ec5-1e19c6deb322&quot;,
                 &quot;name&quot;: &quot;Franecki Inc&quot;,
                 &quot;logoUrl&quot;: null
             }
@@ -1243,10 +1249,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="scope"                data-endpoint="GETapi-events"
-               value="internal"
+               value="external"
                data-component="body">
     <br>
-<p>Example: <code>internal</code></p>
+<p>Example: <code>external</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>internal</code></li> <li><code>external</code></li></ul>
         </div>
@@ -1281,10 +1287,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="sort"                data-endpoint="GETapi-events"
-               value="nearest"
+               value="newest"
                data-component="body">
     <br>
-<p>Example: <code>nearest</code></p>
+<p>Example: <code>newest</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>newest</code></li> <li><code>nearest</code></li> <li><code>price</code></li></ul>
         </div>
@@ -1358,8 +1364,8 @@ fetch(url, {
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: &quot;01a05d19-f6a4-70ca-a6d7-749355296035&quot;,
-        &quot;slug&quot;: &quot;sequi-molestiae-voluptatem-et-xrRe4&quot;,
+        &quot;id&quot;: &quot;01a05d67-8228-7117-b5c5-3bb0f841058d&quot;,
+        &quot;slug&quot;: &quot;sequi-molestiae-voluptatem-et-9e2jC&quot;,
         &quot;name&quot;: &quot;Sequi molestiae voluptatem et.&quot;,
         &quot;posterUrl&quot;: null,
         &quot;description&quot;: &quot;Aut odio dolorum voluptates exercitationem est aperiam quis. Nulla vel voluptas aliquam qui molestiae voluptatem. Voluptatem molestiae magnam blanditiis in aliquid.&quot;,
@@ -1367,10 +1373,10 @@ fetch(url, {
         &quot;location&quot;: null,
         &quot;scope&quot;: &quot;external&quot;,
         &quot;status&quot;: &quot;draft&quot;,
-        &quot;startDate&quot;: &quot;2026-09-08T13:12:57+00:00&quot;,
-        &quot;endDate&quot;: &quot;2026-09-09T13:12:57+00:00&quot;,
+        &quot;startDate&quot;: &quot;2026-09-08T14:37:39+00:00&quot;,
+        &quot;endDate&quot;: &quot;2026-09-09T14:37:39+00:00&quot;,
         &quot;organizer&quot;: {
-            &quot;id&quot;: &quot;01a05d19-f6a3-72e9-885e-f556c95e265f&quot;,
+            &quot;id&quot;: &quot;01a05d67-8227-72bf-b364-68a25d24dc82&quot;,
             &quot;name&quot;: &quot;Heathcote, Abshire and Schroeder&quot;,
             &quot;logoUrl&quot;: null,
             &quot;description&quot;: &quot;In unde rerum voluptas ab maxime qui rerum.&quot;
@@ -1578,6 +1584,273 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
+                    <h2 id="endpoints-GETapi-user-tickets">Get all active tickets for the authenticated user.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-user-tickets">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "https://jasmine-unworthy-folic.ngrok-free.dev/api/user/tickets" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://jasmine-unworthy-folic.ngrok-free.dev/api/user/tickets"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-user-tickets">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+vary: Origin
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-user-tickets" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-user-tickets"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-user-tickets"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-user-tickets" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-user-tickets">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-user-tickets" data-method="GET"
+      data-path="api/user/tickets"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-user-tickets', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-user-tickets"
+                    onclick="tryItOut('GETapi-user-tickets');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-user-tickets"
+                    onclick="cancelTryOut('GETapi-user-tickets');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-user-tickets"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/user/tickets</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-user-tickets"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-user-tickets"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-GETapi-user-tickets--ticket_code-">Get details of a specific ticket including its QR code.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-user-tickets--ticket_code-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "https://jasmine-unworthy-folic.ngrok-free.dev/api/user/tickets/architecto" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://jasmine-unworthy-folic.ngrok-free.dev/api/user/tickets/architecto"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-user-tickets--ticket_code-">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+vary: Origin
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-user-tickets--ticket_code-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-user-tickets--ticket_code-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-user-tickets--ticket_code-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-user-tickets--ticket_code-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-user-tickets--ticket_code-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-user-tickets--ticket_code-" data-method="GET"
+      data-path="api/user/tickets/{ticket_code}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-user-tickets--ticket_code-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-user-tickets--ticket_code-"
+                    onclick="tryItOut('GETapi-user-tickets--ticket_code-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-user-tickets--ticket_code-"
+                    onclick="cancelTryOut('GETapi-user-tickets--ticket_code-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-user-tickets--ticket_code-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/user/tickets/{ticket_code}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-user-tickets--ticket_code-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-user-tickets--ticket_code-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>ticket_code</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="ticket_code"                data-endpoint="GETapi-user-tickets--ticket_code-"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>Example: <code>architecto</code></p>
+            </div>
+                    </form>
+
                     <h2 id="endpoints-GETapi-admin-only">GET api/admin-only</h2>
 
 <p>
@@ -1755,11 +2028,11 @@ fetch(url, {
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: &quot;01a05d19-f590-71ba-b20d-424efe4b649a&quot;,
-            &quot;slug&quot;: &quot;mollitia-modi-deserunt-aut-JOOPy&quot;,
+            &quot;id&quot;: &quot;01a05d67-8112-7224-80e3-b89a7e7e314e&quot;,
+            &quot;slug&quot;: &quot;mollitia-modi-deserunt-aut-aAwI3&quot;,
             &quot;name&quot;: &quot;Mollitia modi deserunt aut.&quot;,
             &quot;posterUrl&quot;: null,
-            &quot;startDate&quot;: &quot;2026-09-08T13:12:57+00:00&quot;,
+            &quot;startDate&quot;: &quot;2026-09-08T14:37:39+00:00&quot;,
             &quot;location&quot;: null,
             &quot;organizer&quot;: {
                 &quot;name&quot;: &quot;Glover, Raynor and Schultz&quot;,
@@ -1767,11 +2040,11 @@ fetch(url, {
             }
         },
         {
-            &quot;id&quot;: &quot;01a05d19-f596-721e-885a-ea7d76e414ac&quot;,
-            &quot;slug&quot;: &quot;libero-aliquam-veniam-corporis-P6A83&quot;,
+            &quot;id&quot;: &quot;01a05d67-8114-73a8-8a0c-1c224e287fad&quot;,
+            &quot;slug&quot;: &quot;libero-aliquam-veniam-corporis-U4XtX&quot;,
             &quot;name&quot;: &quot;Libero aliquam veniam corporis.&quot;,
             &quot;posterUrl&quot;: null,
-            &quot;startDate&quot;: &quot;2026-09-08T13:12:57+00:00&quot;,
+            &quot;startDate&quot;: &quot;2026-09-08T14:37:39+00:00&quot;,
             &quot;location&quot;: null,
             &quot;organizer&quot;: {
                 &quot;name&quot;: &quot;Little Inc&quot;,
@@ -1901,16 +2174,16 @@ fetch(url, {
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: &quot;01a05d19-f59c-7324-8407-867c32ad1da5&quot;,
+            &quot;id&quot;: &quot;01a05d67-811b-73a8-884b-72c642a3130c&quot;,
             &quot;name&quot;: &quot;Conroy-Dibbert&quot;,
-            &quot;slug&quot;: &quot;conroy-dibbert-k88ge&quot;,
+            &quot;slug&quot;: &quot;conroy-dibbert-5XZ4m&quot;,
             &quot;logoUrl&quot;: null,
             &quot;description&quot;: &quot;Assumenda et tenetur ab reiciendis quia.&quot;
         },
         {
-            &quot;id&quot;: &quot;01a05d19-f5a0-71bb-876c-1252c01f15b2&quot;,
+            &quot;id&quot;: &quot;01a05d67-811d-712d-b9fe-97cf102b3848&quot;,
             &quot;name&quot;: &quot;Braun Group&quot;,
-            &quot;slug&quot;: &quot;braun-group-MNZvJ&quot;,
+            &quot;slug&quot;: &quot;braun-group-A5uRe&quot;,
             &quot;logoUrl&quot;: null,
             &quot;description&quot;: &quot;Et dolores quia maiores.&quot;
         }
@@ -2037,14 +2310,14 @@ fetch(url, {
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: &quot;01a05d19-f698-706e-a555-09f6572e9868&quot;,
+            &quot;id&quot;: &quot;01a05d67-821a-70ba-9826-f9435b81505f&quot;,
             &quot;name&quot;: &quot;Juvenal O&#039;Kon&quot;,
             &quot;category&quot;: &quot;MC&quot;,
             &quot;bio&quot;: &quot;Repellat officiis corporis nesciunt ut. Iure impedit molestiae ut rem est esse sint. Molestiae sunt suscipit doloribus fugiat ut aut. Et error neque recusandae et.&quot;,
             &quot;portfolioUrl&quot;: &quot;https://hoeger.net/dicta-vitae-assumenda-consequatur-ut.html&quot;
         },
         {
-            &quot;id&quot;: &quot;01a05d19-f69e-73d9-8821-1dcee69d2f8b&quot;,
+            &quot;id&quot;: &quot;01a05d67-8221-7287-a86f-487838c1410c&quot;,
             &quot;name&quot;: &quot;Lola Doyle&quot;,
             &quot;category&quot;: &quot;Band&quot;,
             &quot;bio&quot;: &quot;Aspernatur consectetur id a consectetur assumenda eaque neque. Sunt nihil accusantium odit ut. Rem dolorem aut quis. Dolores omnis et earum consequatur asperiores est vel id.&quot;,

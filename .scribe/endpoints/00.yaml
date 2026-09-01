@@ -62,7 +62,7 @@ endpoints:
         name: scope
         description: ''
         required: false
-        example: internal
+        example: external
         type: string
         enumValues:
           - internal
@@ -97,7 +97,7 @@ endpoints:
         name: sort
         description: ''
         required: false
-        example: nearest
+        example: newest
         type: string
         enumValues:
           - newest
@@ -131,10 +131,10 @@ endpoints:
     cleanBodyParameters:
       q: b
       category: architecto
-      scope: internal
+      scope: external
       dateFrom: '2026-09-01'
       dateTo: '2052-09-24'
-      sort: nearest
+      sort: newest
       page: 22
       perPage: 7
     fileParameters: []
@@ -142,7 +142,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":"01a05d19-f56a-7217-9601-94719ce3220b","slug":"quos-velit-et-fugiat-uu5EM","name":"Quos velit et fugiat.","posterUrl":null,"category":null,"location":null,"scope":"external","startDate":"2026-09-08T13:12:57+00:00","endDate":"2026-09-09T13:12:57+00:00","organizer":{"id":"01a05d19-f565-70a0-bab7-5c4a8897bf5d","name":"Koch PLC","logoUrl":null}},{"id":"01a05d19-f572-7240-97c2-21bd295d2a21","slug":"praesentium-quis-adipisci-flQJ0","name":"Praesentium quis adipisci.","posterUrl":null,"category":null,"location":null,"scope":"internal","startDate":"2026-09-08T13:12:57+00:00","endDate":"2026-09-09T13:12:57+00:00","organizer":{"id":"01a05d19-f571-7312-ab7b-bab327677d18","name":"Franecki Inc","logoUrl":null}}]}'
+        content: '{"data":[{"id":"01a05d67-80eb-7205-ae06-bb087aba43da","slug":"quos-velit-et-fugiat-NQbqP","name":"Quos velit et fugiat.","posterUrl":null,"category":null,"location":null,"scope":"external","startDate":"2026-09-08T14:37:39+00:00","endDate":"2026-09-09T14:37:39+00:00","organizer":{"id":"01a05d67-80e5-7106-be52-23eb9aa49035","name":"Koch PLC","logoUrl":null}},{"id":"01a05d67-80f6-735f-91f2-ed6fca04215d","slug":"praesentium-quis-adipisci-YfSOU","name":"Praesentium quis adipisci.","posterUrl":null,"category":null,"location":null,"scope":"internal","startDate":"2026-09-08T14:37:39+00:00","endDate":"2026-09-09T14:37:39+00:00","organizer":{"id":"01a05d67-80f5-706b-8ec5-1e19c6deb322","name":"Franecki Inc","logoUrl":null}}]}'
         headers: []
         description: ''
     responseFields: []
@@ -191,7 +191,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":"01a05d19-f6a4-70ca-a6d7-749355296035","slug":"sequi-molestiae-voluptatem-et-xrRe4","name":"Sequi molestiae voluptatem et.","posterUrl":null,"description":"Aut odio dolorum voluptates exercitationem est aperiam quis. Nulla vel voluptas aliquam qui molestiae voluptatem. Voluptatem molestiae magnam blanditiis in aliquid.","category":null,"location":null,"scope":"external","status":"draft","startDate":"2026-09-08T13:12:57+00:00","endDate":"2026-09-09T13:12:57+00:00","organizer":{"id":"01a05d19-f6a3-72e9-885e-f556c95e265f","name":"Heathcote, Abshire and Schroeder","logoUrl":null,"description":"In unde rerum voluptas ab maxime qui rerum."},"tickets":[],"timeline":[]}}'
+        content: '{"data":{"id":"01a05d67-8228-7117-b5c5-3bb0f841058d","slug":"sequi-molestiae-voluptatem-et-9e2jC","name":"Sequi molestiae voluptatem et.","posterUrl":null,"description":"Aut odio dolorum voluptates exercitationem est aperiam quis. Nulla vel voluptas aliquam qui molestiae voluptatem. Voluptatem molestiae magnam blanditiis in aliquid.","category":null,"location":null,"scope":"external","status":"draft","startDate":"2026-09-08T14:37:39+00:00","endDate":"2026-09-09T14:37:39+00:00","organizer":{"id":"01a05d67-8227-72bf-b364-68a25d24dc82","name":"Heathcote, Abshire and Schroeder","logoUrl":null,"description":"In unde rerum voluptas ab maxime qui rerum."},"tickets":[],"timeline":[]}}'
         headers: []
         description: ''
     responseFields: []
@@ -225,6 +225,98 @@ endpoints:
     cleanBodyParameters: []
     fileParameters: []
     responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/user/tickets
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get all active tickets for the authenticated user.'
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'api/user/tickets/{ticket_code}'
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get details of a specific ticket including its QR code.'
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      ticket_code:
+        custom: []
+        name: ticket_code
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      ticket_code: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
     responseFields: []
     auth: []
     controller: null
